@@ -1,206 +1,101 @@
-# 🏠 House Price Prediction Using Linear Regression
+Retail Sales Data Analysis
 
-## 📌 Project Overview
+Project Overview
+This project performs Exploratory Data Analysis (EDA) on a retail sales dataset using Python. The goal is to understand sales patterns, customer behavior, product category performance, and relationships between numerical variables.
 
-This project focuses on predicting house sale prices using machine learning techniques. The **Ames Housing Dataset** was used to build and evaluate a Linear Regression model.
+Objectives
+- Inspect and understand the dataset
+- Check data types, missing values, and duplicates
+- Calculate descriptive statistics
+- Analyze monthly and quarterly sales trends
+- Explore customer age groups and gender distribution
+- Analyze product category sales and revenue
+- Examine correlations between numerical variables
+- Identify business insights and provide recommendations
 
-The project covers the complete machine learning workflow, including data loading, exploratory data analysis, data cleaning, feature selection, categorical encoding, model training, evaluation, visualization, and model interpretation.
+Tools Used
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
 
-## 🎯 Objective
-
-The main objective is to develop a machine learning model that can predict house prices based on different characteristics of a property, such as:
-
-- Overall house quality
-- Living area
-- Neighborhood
-- Year built
-- Number of bedrooms
-- Number of bathrooms
-- Garage capacity
-- Basement area
-
-## 🛠️ Technologies Used
-
-- **Python**
-- **Pandas**
-- **NumPy**
-- **Matplotlib**
-- **Seaborn**
-- **Scikit-learn**
-- **Jupyter Notebook**
-
-## 📂 Dataset
-
-The project uses the **Ames Housing Dataset**.
-
-- **Rows:** 2,930
-- **Columns:** 82
-- **Target Variable:** `SalePrice`
-
-The `TestData.csv` file was kept separate and was not used during model training or evaluation.
-
-## 🔍 Exploratory Data Analysis
-
-The following analyses were performed:
-
-- Dataset structure and dimensions
-- First rows of the dataset
-- Missing-value analysis
-- Descriptive statistics
-- House-price distribution
-- Numerical feature correlation
-- Correlation heatmap
-
-## 🧹 Data Preprocessing
-
-### Missing Values
-
-Missing numerical values were handled using the **median**.
-
-Missing categorical values were handled using the **most frequent value**.
-
-### Categorical Variables
-
-Categorical variables were converted into numerical representations using **One-Hot Encoding**.
-
-## 🎯 Feature Selection
-
-Important predictors considered included:
-
-- `Overall Qual`
-- `Gr Liv Area`
-- `Garage Cars`
-- `Total Bsmt SF`
-- `Year Built`
-- `Full Bath`
-- `Bedroom AbvGr`
-- `Neighborhood`
-
-Feature selection was supported by correlation analysis and domain reasoning.
-
-## 🤖 Machine Learning Models
-
-### Linear Regression
-
-Linear Regression was the primary model.
-
-The data was divided into:
-
-- **80% Training Data**
-- **20% Testing Data**
-
-### Ridge Regression
-
-Ridge Regression was used as a bonus comparison model.
-
-### Lasso Regression
-
-Lasso Regression was also used as a bonus comparison model.
-
-## 📊 Model Evaluation
-
-The models were evaluated using:
-
-- **Mean Squared Error (MSE)**
-- **Root Mean Squared Error (RMSE)**
-- **R² Score**
-
-Lower MSE and RMSE indicate better performance, while a higher R² indicates that the model explains more variation in house prices.
-
-## 📈 Visualizations
-
-The project includes:
-
-- House Price Distribution
-- Correlation Heatmap
-- Actual vs Predicted Prices
-- Residual Plot
-
-## 📌 Coefficient Analysis
-
-Linear Regression coefficients were analyzed to identify features with the strongest positive and negative relationships with predicted house prices.
-
-A positive coefficient indicates an association with a higher predicted price, while a negative coefficient indicates an association with a lower predicted price, while holding other model features constant.
-
-## 📁 Project Structure
-
-```text
-House-Price-Prediction/
-│
-├── AmesHousing.csv
-├── TestData.csv
-├── House_Price_Prediction.ipynb
-└── README.md
-```
-
-## 🚀 How to Run
-
-Install the required libraries:
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-```
-
-Start Jupyter Notebook:
-
-```bash
-jupyter notebook
-```
-
-Open `House_Price_Prediction.ipynb` and run the cells from top to bottom.
-
-## 📋 Project Workflow
-
-```text
 Dataset
-   ↓
-Data Loading
-   ↓
-Exploratory Data Analysis
-   ↓
-Missing Value Handling
-   ↓
-Feature Selection
-   ↓
-One-Hot Encoding
-   ↓
-Train/Test Split (80/20)
-   ↓
-Linear Regression
-   ↓
-Predictions
-   ↓
-MSE / RMSE / R²
-   ↓
-Visualization
-   ↓
-Coefficient Analysis
-   ↓
-Ridge & Lasso Comparison
-```
+The dataset contains 1,000 retail transactions and 9 columns:
+- Transaction ID: Unique transaction identifier
+- Date: Date of the transaction
+- Customer ID: Unique customer identifier
+- Gender: Customer gender
+- Age: Customer age
+- Product Category: Category of the purchased product
+- Quantity: Number of units purchased
+- Price per Unit: Price of one unit
+- Total Amount: Total transaction value
 
-## 💡 Key Learning Outcomes
+Analysis Performed
+1. Data Inspection
+- Dataset shape
+- Column names and data types
+- Missing-value check
+- Duplicate-value check
 
-- Data loading and exploration
-- Data cleaning
-- Missing-value handling
-- Feature selection
-- One-Hot Encoding
-- Train/test splitting
-- Linear Regression
-- Ridge and Lasso Regression
-- Model evaluation
-- Data visualization
-- Residual analysis
-- Model coefficient interpretation
+2. Descriptive Statistics
+- Mean
+- Median
+- Mode
+- Standard deviation
 
-## 👨‍💻 Author
+3. Sales Trend Analysis
+- Monthly sales trends
+- Quarterly sales trends
 
-**Yonas Alene**
+4. Customer Analysis
+- Age-group distribution
+- Gender distribution
+- Average spending by age group
 
-Information Technology Graduate  
-Jimma University
+5. Product Category Analysis
+- Sales quantity by product category
+- Revenue by product category
 
-## 📄 License
+6. Correlation Analysis
+A correlation matrix and heatmap were used to examine relationships between Age, Quantity, Price per Unit, and Total Amount.
 
-This project was created for educational and learning purposes.
+Key Findings
+- Electronics generated the highest revenue.
+- Beauty generated the lowest revenue.
+- May 2023 recorded the highest monthly sales.
+- January 2024 recorded the lowest monthly sales.
+- Customers aged 46-55 represented the largest age group.
+- The gender distribution was relatively balanced: 51% female and 49% male.
+- Customers under 18 had the highest average transaction amount.
+- Price per Unit had a strong positive correlation with Total Amount (approximately 0.85).
+
+Business Recommendations
+1. Maintain sufficient inventory and promotional support for the high-performing Electronics category.
+2. Investigate pricing, product selection, customer demand, and marketing strategies to improve Beauty category performance.
+3. Use monthly and quarterly sales patterns to improve inventory and promotional planning.
+4. Consider both customer volume and average spending when targeting customer segments.
+5. Monitor pricing strategies and their effect on transaction value.
+
+Dataset Limitation
+The dataset contains product categories but does not include individual product names or product IDs. Therefore, a true Top 10 Best-Selling Products analysis could not be performed at the individual-product level. Product performance was instead analyzed at the category level.
+
+Project File
+The main analysis is available in the Jupyter Notebook:
+Retail_Sales_EDA.ipynb
+
+How to Run
+1. Install Python and Jupyter Notebook.
+2. Install the required libraries:
+pip install pandas numpy matplotlib seaborn jupyter
+3. Place the dataset CSV file in the project directory.
+4. Open Jupyter Notebook.
+5. Open Retail_Sales_EDA.ipynb.
+6. Run the notebook cells from top to bottom.
+
+Author
+Yonas Alene
+
+This project was created as a practical Data Analytics and Exploratory Data Analysis project.
