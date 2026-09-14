@@ -1,101 +1,74 @@
-Retail Sales Data Analysis
+# Wine Quality Prediction
 
-Project Overview
-This project performs Exploratory Data Analysis (EDA) on a retail sales dataset using Python. The goal is to understand sales patterns, customer behavior, product category performance, and relationships between numerical variables.
+## Project Overview
+This project predicts wine quality categories using machine learning classification algorithms based on physicochemical properties.
 
-Objectives
-- Inspect and understand the dataset
-- Check data types, missing values, and duplicates
-- Calculate descriptive statistics
-- Analyze monthly and quarterly sales trends
-- Explore customer age groups and gender distribution
-- Analyze product category sales and revenue
-- Examine correlations between numerical variables
-- Identify business insights and provide recommendations
+Models used:
+- Random Forest Classifier
+- SGD Classifier
+- Support Vector Classifier (SVC)
 
-Tools Used
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Jupyter Notebook
+## Dataset
+`WineQT.csv` contains 1,143 rows and 13 columns, including 11 physicochemical features, an `Id` identifier, and the `quality` target. There are no missing values. The `Id` column was removed before model training.
 
-Dataset
-The dataset contains 1,000 retail transactions and 9 columns:
-- Transaction ID: Unique transaction identifier
-- Date: Date of the transaction
-- Customer ID: Unique customer identifier
-- Gender: Customer gender
-- Age: Customer age
-- Product Category: Category of the purchased product
-- Quantity: Number of units purchased
-- Price per Unit: Price of one unit
-- Total Amount: Total transaction value
+## Feature Engineering
+Wine quality scores were grouped into three categories:
+- Low: 3–4
+- Medium: 5–6
+- High: 7–8
 
-Analysis Performed
-1. Data Inspection
-- Dataset shape
-- Column names and data types
-- Missing-value check
-- Duplicate-value check
+This reduced the number of highly imbalanced individual quality classes while retaining meaningful quality information.
 
-2. Descriptive Statistics
-- Mean
-- Median
-- Mode
-- Standard deviation
+## Data Preparation
+An 80/20 stratified train-test split was used to preserve class proportions. StandardScaler was applied to the SGD and SVC models.
 
-3. Sales Trend Analysis
-- Monthly sales trends
-- Quarterly sales trends
+## Model Results
 
-4. Customer Analysis
-- Age-group distribution
-- Gender distribution
-- Average spending by age group
+| Model | Accuracy | Main Strength |
+|---|---:|---|
+| Random Forest | **86%** | Best overall accuracy |
+| SVC | 65% | Better minority-class detection |
+| SGD Classifier | 64% | Better minority-class recall |
 
-5. Product Category Analysis
-- Sales quantity by product category
-- Revenue by product category
+Random Forest achieved approximately 86% accuracy and 84% weighted F1-score. However, it struggled to identify the Low-quality class. SVC and SGD achieved approximately 0.75 recall for Low-quality wines.
 
-6. Correlation Analysis
-A correlation matrix and heatmap were used to examine relationships between Age, Quantity, Price per Unit, and Total Amount.
+## Evaluation
+The models were evaluated using:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion matrices
 
-Key Findings
-- Electronics generated the highest revenue.
-- Beauty generated the lowest revenue.
-- May 2023 recorded the highest monthly sales.
-- January 2024 recorded the lowest monthly sales.
-- Customers aged 46-55 represented the largest age group.
-- The gender distribution was relatively balanced: 51% female and 49% male.
-- Customers under 18 had the highest average transaction amount.
-- Price per Unit had a strong positive correlation with Total Amount (approximately 0.85).
+Because the dataset is imbalanced, macro F1-score and class-specific recall were also considered.
 
-Business Recommendations
-1. Maintain sufficient inventory and promotional support for the high-performing Electronics category.
-2. Investigate pricing, product selection, customer demand, and marketing strategies to improve Beauty category performance.
-3. Use monthly and quarterly sales patterns to improve inventory and promotional planning.
-4. Consider both customer volume and average spending when targeting customer segments.
-5. Monitor pricing strategies and their effect on transaction value.
+## Feature Importance
+Random Forest feature importance was used to identify the physicochemical properties that contributed most to predictions.
 
-Dataset Limitation
-The dataset contains product categories but does not include individual product names or product IDs. Therefore, a true Top 10 Best-Selling Products analysis could not be performed at the individual-product level. Product performance was instead analyzed at the category level.
+## Conclusion
+Random Forest was the strongest overall model when general prediction accuracy was the main objective. However, if identifying rare Low-quality wines is more important, SVC or SGD may be preferable because they detected the minority class more effectively.
 
-Project File
-The main analysis is available in the Jupyter Notebook:
-Retail_Sales_EDA.ipynb
+## Future Improvements
+- Hyperparameter tuning
+- Cross-validation
+- Advanced class-balancing techniques
+- Collecting more minority-class samples
+- Testing additional classification algorithms
+- Feature selection and engineering
+- Optimizing for macro F1-score
+- Building a web application
 
-How to Run
-1. Install Python and Jupyter Notebook.
-2. Install the required libraries:
-pip install pandas numpy matplotlib seaborn jupyter
-3. Place the dataset CSV file in the project directory.
-4. Open Jupyter Notebook.
-5. Open Retail_Sales_EDA.ipynb.
-6. Run the notebook cells from top to bottom.
+## Technologies Used
+Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, and Jupyter Notebook.
 
-Author
-Yonas Alene
+## Project Structure
+```text
+Wine-Quality-Prediction/
+├── WineQT.csv
+├── Wine_Quality_Prediction.ipynb
+├── README.md
+└── images/
+```
 
-This project was created as a practical Data Analytics and Exploratory Data Analysis project.
+## Skills Demonstrated
+Data preprocessing, EDA, visualization, feature engineering, class imbalance handling, stratified splitting, feature scaling, classification, model evaluation, confusion matrix analysis, feature importance, and model comparison.
